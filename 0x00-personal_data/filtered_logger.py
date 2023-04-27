@@ -18,7 +18,6 @@ class RedactingFormatter(logging.Formatter):
 
     def __init__(self, fields: List[str]):
         """[summary]
-
         Args:
             fields (List[str]): [description]
         """
@@ -35,14 +34,12 @@ class RedactingFormatter(logging.Formatter):
 def filter_datum(fields: List[str], redaction: str, message: str,
                  separator: str) -> str:
     """[summary]
-
     Args:
         fields (List[str]): [representing all fields to obfuscate]
         redaction (str): [representing by what the field will be obfuscated]
         message (str): [representing the log line]
         separator (str): [ representing by which character is separating
         all fields in the log line]
-
     Returns:
         str: [the log message obfuscated:]
     """
