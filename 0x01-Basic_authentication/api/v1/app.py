@@ -3,12 +3,13 @@
 Route module for the API
 """
 from os import getenv
-from api.v1.views import app_views
 from flask import Flask, jsonify, abort, request
 from flask_cors import (CORS, cross_origin)
+import os
+
+from api.v1.views import app_views
 from api.v1.auth.auth import Auth
 from api.v1.auth.basic_auth import BasicAuth
-import os
 
 
 app = Flask(__name__)
@@ -50,6 +51,7 @@ def before_request():
             abort(401)
         if not auth.current_user(request):
             abort(403)
+
 
 @app.errorhandler(404)
 def not_found(error) -> str:
