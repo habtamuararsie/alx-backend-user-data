@@ -8,7 +8,6 @@ def hash_password(password: str) -> bytes:
     """
     return bcrypt.hashpw(str.encode(password), bcrypt.gensalt())
 
-
 def is_valid(hashed_password: bytes, password: str) -> bool:
     """Checks is a hashed password was formed from the given password.
     """
