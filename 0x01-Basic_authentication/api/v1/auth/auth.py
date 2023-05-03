@@ -3,11 +3,11 @@
 """
 from flask import request
 from typing import List, TypeVar
+import re
 
 
 class Auth:
     """ API authentication """
-
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """ validating if endpoint requires authentication """
@@ -46,7 +46,6 @@ class Auth:
 
         result=request.headers.get("Authorization", None)
         return result
-
 
     def current_user(self, request=None) -> TypeVar('User'):
         """ autheticate current user """
