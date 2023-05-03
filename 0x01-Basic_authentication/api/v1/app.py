@@ -17,11 +17,16 @@ app.register_blueprint(app_views)
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 auth = None
 
-
 if getenv("AUTH_TYPE") == "auth":
     auth = Auth()
 elif getenv("AUTH_TYPE") == "basic_auth":
     auth = BasicAuth()
+
+@app.errorhandler(404)
+def not_found(error) -> str:
+    """ Not found handler
+    """
+    return jsonify({"error": "Not found"}), 404
 
 
 @app.errorhandler(401)
@@ -51,13 +56,6 @@ def before_request():
             abort(401)
         if not auth.current_user(request):
             abort(403)
-
-
-@app.errorhandler(404)
-def not_found(error) -> str:
-    """ Not found handler
-    """
-    return jsonify({"error": "Not found"}), 404
 
 
 if __name__ == "__main__":
