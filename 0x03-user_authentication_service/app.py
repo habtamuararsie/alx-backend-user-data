@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """Route module for the API
 """
 
@@ -10,7 +9,6 @@ from auth import Auth
 from user import User
 
 AUTH = Auth()
-
 app = Flask(__name__)
 
 
